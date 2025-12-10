@@ -8,6 +8,15 @@ import { Label } from '@/components/ui/label'
 import { Card } from '@/components/ui/card'
 import { Loader2, Copy, CheckCheck } from 'lucide-react'
 
+// Mock responses for different scenarios
+const mockResponses = [
+  "I appreciate you thinking of me for this task. However, given my current project commitments and strategic priorities, I believe this would be better suited for someone with more immediate bandwidth. I'd be happy to connect you with the appropriate team member who can provide the attention this deserves.",
+  "Thank you for bringing this to my attention. While I understand the urgency, I'd like to ensure we're aligned on priorities and resource allocation before proceeding. Perhaps we could schedule a brief sync to discuss the roadmap and determine the most impactful path forward?",
+  "I wanted to circle back on this request. After careful consideration, I believe we need to take a more strategic approach to ensure optimal outcomes. Let's leverage our collective expertise and perhaps explore alternative solutions that align with our broader organizational objectives.",
+  "I appreciate your perspective on this matter. In the interest of fostering cross-functional collaboration, I'd recommend we schedule a working session with all key stakeholders to ensure alignment and capture diverse viewpoints. This will help us move forward with a more holistic strategy.",
+  "Thank you for sharing your thoughts. While I recognize the importance of this initiative, I'd like to propose we revisit the scope and timeline to ensure we're delivering maximum value. Perhaps we could table this for our next quarterly planning session when we have more visibility into resource capacity?",
+]
+
 export default function CorporateSpeakTranslator() {
   const [context, setContext] = useState('')
   const [phrase, setPhrase] = useState('')
@@ -22,17 +31,12 @@ export default function CorporateSpeakTranslator() {
     setResponse('')
     setIsCopied(false)
 
-    const response = await fetch(
-      'https://0vyy3tt0kg.execute-api.us-east-1.amazonaws.com/generate-corporate-speak',
-      {
-        method: 'POST',
-        body: JSON.stringify({ context, phrase }),
-      }
-    )
+    // Simulate API call with mock data
+    await new Promise((resolve) => setTimeout(resolve, 1500))
 
-    const data = await response.json()
-
-    setResponse(data[0].text)
+    const randomResponse =
+      mockResponses[Math.floor(Math.random() * mockResponses.length)]
+    setResponse(randomResponse)
     setIsLoading(false)
   }
 
