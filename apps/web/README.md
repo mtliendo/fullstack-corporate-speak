@@ -1,30 +1,70 @@
-# Corporate email responder
+# Corporate Speak Translator - Frontend
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+This is the frontend application for the Corporate Speak Translator, built with Next.js.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/focus-otters-projects/v0-corporate-email-responder)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/rA8ToIutLR8)
+![Corporate Speak Translator](../../project-screenshots/corporate-screenshot.png)
 
 ## Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+This is a Next.js 16 application that serves as the frontend for the Corporate Speak Translator. Users can input casual phrases and receive polished corporate responses.
 
-## Deployment
+## Tech Stack
 
-Your project is live at:
+- **Framework**: Next.js 16
+- **UI Library**: React 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Components**: Radix UI
+- **Icons**: Lucide React
 
-**[https://vercel.com/focus-otters-projects/v0-corporate-email-responder](https://vercel.com/focus-otters-projects/v0-corporate-email-responder)**
+## Mock Data
 
-## Build your app
+Currently, this application uses **mock data** for demonstration purposes. The translation functionality simulates an API call and returns one of several predefined corporate responses. This allows you to see the application in action without requiring backend infrastructure.
 
-Continue building your app on:
+In the `starter` branch, the `handleTranslate` function in `app/page.tsx` uses mock responses. The function simulates a network delay and randomly selects from a set of pre-written corporate phrases.
 
-**[https://v0.app/chat/rA8ToIutLR8](https://v0.app/chat/rA8ToIutLR8)**
+## Key Functionality
 
-## How It Works
+### `handleTranslate` Function
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+The main translation logic is handled by the `handleTranslate` function located in `app/page.tsx`. This function:
+
+1. Validates the input phrase
+2. Simulates an API call with a loading state
+3. Returns a random corporate response from the mock data array
+4. Updates the UI with the translated response
+
+```typescript
+const handleTranslate = async () => {
+  if (!phrase.trim()) return
+
+  setIsLoading(true)
+  setResponse('')
+  setIsCopied(false)
+
+  // Simulate API call with mock data
+  await new Promise((resolve) => setTimeout(resolve, 1500))
+
+  const randomResponse =
+    mockResponses[Math.floor(Math.random() * mockResponses.length)]
+  setResponse(randomResponse)
+  setIsLoading(false)
+}
+```
+
+## Development
+
+Run the development server:
+
+```bash
+pnpm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Building for Production
+
+```bash
+pnpm run build
+pnpm run start
+```
