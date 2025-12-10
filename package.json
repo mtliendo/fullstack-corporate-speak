@@ -1,0 +1,19 @@
+{
+  "name": "corporate-speak",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "web:build": "pnpm --filter web run build",
+    "web:dev": "pnpm --filter web run dev",
+    "web:lint": "pnpm --filter web run lint",
+    "web:start": "pnpm --filter web run start",
+    "infra:build": "pnpm --filter infra run build",
+    "infra:deploy": "pnpm --filter infra run deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.22.0"
+}
